@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+		<title>Localidades do Alto Juruá(Acre)</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+		<link rel="stylesheet" href="./publish.min.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-fixed-top navbar-light" style="background-color: #1ea789;" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand custom-font-app-title" style="color: white;">Localidades do Alto Juruá(Acre)</a>
+					</div>
+					
+				</div>
+			</nav>
+		</div>
+		<div class="navbar-offset"></div>
+		<div id="map-canvas">
+			<div id="map"></div>
+		</div>
+		<div class="row main-row">
+			<div class="col-sm-4 col-md-2 sidebar sidebar-left pull-left">
+				<div class="panel-group sidebar-body" id="accordion-left">
+					<div class="panel panel-default">
+						<div class="panel-heading padding-header" >
+							<h4 class="panel-title custom-font-subtitle">
+                                <i class="fa fa-list-alt"></i><a id="layers-title" data-toggle="collapse" href="#layers"> Layers</a>
+								<span class="pull-right slide-submenu"><i class="fa fa-chevron-left"></i></span>
+							</h4>
+						</div>
+						<div id="layers" class="panel-collapse collapse in overflow-y">
+								<div class="panel-body list-group padding-body">
+										<label>
+											<input name="villages" type="checkbox">
+											<a id="villages" href="javascript:void(0);"> Villages </a>
+										</label>
+								</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading padding-header">
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-list-alt"></i><a id="description-title" data-toggle="collapse" href="#properties"> Description</a>
+							</h4>
+						</div>
+						<div id="properties" class="panel-collapse collapse overflow-y">
+							<div class="panel-body padding-body">
+								<p class="custom-font-body" id="layer-description"></p>
+								<button id="more" type="button" class="btn btn-default custom-font-more" style="display:none;">
+									More
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading padding-header">
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-list-alt"></i><a id="legend-title" data-toggle="collapse" href="#legends"> Legend</a>
+							</h4>
+						</div>
+						<div id="legends" class="panel-collapse collapse overflow-y">
+							<div id="legend" class="panel-body padding-body custom-font-legend"></div>
+						</div>
+					</div>
+					<div id="panel-download" class="panel panel-default">
+						<div class="panel-heading padding-header" style="height: 29px;">
+							<h4 class="panel-title custom-font-subtitle">
+								<i class="fa fa-download"></i><a id="download-title"> Download</a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="mini-submenu mini-submenu-left pull-left">
+			<i class="fa fa-list-alt"></i>
+		</div>
+		<img id="loader" src="./default.gif" hidden="hidden"/>
+		<div id="loader-message"><h4 id="loader-message-text"></h4></div>
+		<footer class="navbar-default navbar-fixed-bottom">
+			<div id="footer" class="container-fluid">
+				<p>Powered by package <a href="https://github.com/TerraME/publish" target="_blank">publish</a> of <a href="http://www.terrame.org" target="_blank">TerraME</a>.</p>
+			</div>
+		</footer>
+		<div class="modal fade" id="modal-app-description" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title custom-font-subtitle">Localidades do Alto Juruá(Acre)</h4>
+					</div>
+					<div class="modal-body">
+						<p class="custom-font-body">   <table style="width:100%"><tr>
+    <td style="width: 100%">Esta aplicação apresenta o gradiente urbano das localidades amostradas por Lana et al. (2017).
+   Em 2015, um conjunto de 40 localidades na região do Alto Juruá (Acre) foi caracterizado com base no inquérito realizado em 520 domicílios com o objetivo de avaliar o grau de contribuição do domicílio e da localidade para explicar a prevalência local da malária. Os resultados sugeriram um território complexo para o qual uma taxonomia mais complexa que a rural vs. urbana seria útil para classificar áreas com riscos diferentes para a malária. Adotando um modelo de representação da urbanização baseado na perspectiva de um gradiente, essas localidades foram classificadas em termos de paisagem de entorno (Sistema de Objetos) e seu conteúdo social (Sistema de Valores) (Dal'Asta et al., 2018). Além dos dados do inquérito domiciliar, foram utilizados dados de uso e cobertura da terra do TerraClass que permitiram posicionar cada localidade ao longo de um gradiente de intensidades medidas em relação à cidade de Mâncio Lima. Os resultados mostraram que as localidades, oficialmente classificadas como rurais, estão inseridas em contextos que não são essencialmente urbanos ou rurais, corroborando com o argumento de que a estreita relação entre as populações do campo e os centros urbanos é um fenômeno observável em toda a Amazônia.<p><p> <b>Referências:</b><br>Lana, R.M.; Riback, T. I. S.; Lima, T. F. M., da Silva-Nunes, M.; Cruz, O. G.; Oliveira, F. G. S.; Moresco, G. G.; Honório, N. A.; Codeço, C. T. Socioeconomic and demographic characterization of an endemic malaria region in Brazil by multiple correspondence analysis. Malar J. 2017;16:1. doi: 10.1186/s12936-016-1650-6.<p><p>
+   Dal'Asta, A.P.; Lana, R.M.; Amaral, S.; Codeço, C.T.; Monteiro, A.M.V. The Urban Gradient in Malaria-Endemic Municipalities in Acre: Revisiting the Role of Locality. Int. J. Environ. Res. Public Health 2018, 15(6), 1254; doi:10.3390/ijerph15061254.</td>
+    <tr>
+<td style="width: 100%" align="left"><p><p> <b>Coordenação</b><br>Raquel Martins Lana (PROCC/FIOCRUZ) & Cláudia Torres Codeço (PROCC/FIOCRUZ)
+
+<tr>
+<table style="width:100%"><tr>
+<td style="width: 15%" align="left"> <p><p> <b>Realização</b><br> <img src="A_figTab2.png"/></td>
+<td style="width: 85%" align="left"> <p><p> <b>Apoio</b><br> <img src="A_figTab3.png"/></td>
+</tr></table>
+   </p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesTREZEDEMAIO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesTREZEDEMAIO"> TREZE DE MAIO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesTREZEDEMAIO">
+						<p class="custom-font-body"> TREZE DE MAIO é uma localidade urbana.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Treze de Maio.</p>
+						
+						<img class="report-img" src="TREZE DE MAIO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBAIRROCENTRO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBAIRROCENTRO"> BAIRRO CENTRO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBAIRROCENTRO">
+						<p class="custom-font-body"> BAIRRO CENTRO é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BAIRRO CENTRO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBANDEIRANTE" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBANDEIRANTE"> BANDEIRANTE</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBANDEIRANTE">
+						<p class="custom-font-body"> BANDEIRANTE é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BANDEIRANTE.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBARROVERMELHO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBARROVERMELHO"> BARRO VERMELHO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBARROVERMELHO">
+						<p class="custom-font-body"> A localidade BARRO VERMELHO está a 45km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="BARRO VERMELHO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBAIRRODARIOPEREIRA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBAIRRODARIOPEREIRA"> BAIRRO DARIO PEREIRA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBAIRRODARIOPEREIRA">
+						<p class="custom-font-body"> BAIRRO DARIO PEREIRA é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BAIRRO DARIO PEREIRA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBETANIA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBETANIA"> BETANIA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBETANIA">
+						<p class="custom-font-body"> BETANIA é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BETANIA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBAIRROMANOELGOMES" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBAIRROMANOELGOMES"> BAIRRO MANOEL GOMES</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBAIRROMANOELGOMES">
+						<p class="custom-font-body"> BAIRRO MANOEL GOMES é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BAIRRO MANOEL GOMES.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBOMSOSSEGO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBOMSOSSEGO"> BOM SOSSEGO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBOMSOSSEGO">
+						<p class="custom-font-body"> A localidade BOM SOSSEGO está a 75km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="BOM SOSSEGO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBOAVISTAPDSSS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBOAVISTAPDSSS"> BOA VISTA PDSSS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBOAVISTAPDSSS">
+						<p class="custom-font-body"> A localidade BOA VISTA PDSSS está a 39km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<p class="custom-font-body"> Faz parte do Projeto de Desenvolvimento Sustentável São Salvador - PDSSS</p>
+						
+						<img class="report-img" src="BOA VISTA PDSSS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBAIRROROBERTOLEITE" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBAIRROROBERTOLEITE"> BAIRRO ROBERTO LEITE</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBAIRROROBERTOLEITE">
+						<p class="custom-font-body"> BAIRRO ROBERTO LEITE é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BAIRRO ROBERTO LEITE.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesBAIRROSAOFRANCISCO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesBAIRROSAOFRANCISCO"> BAIRRO SAO FRANCISCO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesBAIRROSAOFRANCISCO">
+						<p class="custom-font-body"> BAIRRO SAO FRANCISCO é uma localidade urbana.</p>
+						
+						<img class="report-img" src="BAIRRO SAO FRANCISCO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesCENTRO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesCENTRO"> CENTRO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesCENTRO">
+						<p class="custom-font-body"> CENTRO é uma localidade urbana.</p>
+						
+						<img class="report-img" src="CENTRO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesCONCEICAOPDSSS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesCONCEICAOPDSSS"> CONCEICAO PDSSS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesCONCEICAOPDSSS">
+						<p class="custom-font-body"> A localidade CONCEICAO PDSSS está a 45km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<p class="custom-font-body"> Faz parte do Projeto de Desenvolvimento Sustentável São Salvador - PDSSS</p>
+						
+						<img class="report-img" src="CONCEICAO PDSSS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesGLEBAPARANA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesGLEBAPARANA"> GLEBA PARANA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesGLEBAPARANA">
+						<p class="custom-font-body"> A localidade GLEBA PARANA está a 42km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Paraná dos Moura.</p>
+						
+						<img class="report-img" src="GLEBA PARANA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesGUARANI" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesGUARANI"> GUARANI</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesGUARANI">
+						<p class="custom-font-body"> GUARANI é uma localidade urbana.</p>
+						
+						<img class="report-img" src="GUARANI.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesIRACEMA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesIRACEMA"> IRACEMA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesIRACEMA">
+						<p class="custom-font-body"> IRACEMA é uma localidade urbana.</p>
+						
+						<img class="report-img" src="IRACEMA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesJOSEMARTINS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesJOSEMARTINS"> JOSE MARTINS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesJOSEMARTINS">
+						<p class="custom-font-body"> JOSE MARTINS é uma localidade urbana.</p>
+						
+						<img class="report-img" src="JOSE MARTINS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesLUZEIRO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesLUZEIRO"> LUZEIRO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesLUZEIRO">
+						<p class="custom-font-body"> A localidade LUZEIRO está a 12km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<img class="report-img" src="LUZEIRO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesNOVACINTRA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesNOVACINTRA"> NOVA CINTRA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesNOVACINTRA">
+						<p class="custom-font-body"> A localidade NOVA CINTRA está a 10km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<img class="report-img" src="NOVA CINTRA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesNOVALICAO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesNOVALICAO"> NOVA LICAO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesNOVALICAO">
+						<p class="custom-font-body"> A localidade NOVA LICAO está a 44km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="NOVA LICAO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesPARANADOSMOURAS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesPARANADOSMOURAS"> PARANA DOS MOURAS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesPARANADOSMOURAS">
+						<p class="custom-font-body"> A localidade PARANA DOS MOURAS está a 19km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<img class="report-img" src="PARANA DOS MOURAS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesPEDATERRA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesPEDATERRA"> PE DA TERRA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesPEDATERRA">
+						<p class="custom-font-body"> A localidade PE DA TERRA está a 7km da cidade mais próxima.</p>
+						
+						<img class="report-img" src="PE DA TERRA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesPROFETA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesPROFETA"> PROFETA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesPROFETA">
+						<p class="custom-font-body"> A localidade PROFETA está a 4km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<img class="report-img" src="PROFETA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesPROSPERIDADEPDSSS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesPROSPERIDADEPDSSS"> PROSPERIDADE PDSSS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesPROSPERIDADEPDSSS">
+						<p class="custom-font-body"> A localidade PROSPERIDADE PDSSS está a 41km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<p class="custom-font-body"> Faz parte do Projeto de Desenvolvimento Sustentável São Salvador - PDSSS</p>
+						
+						<img class="report-img" src="PROSPERIDADE PDSSS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesPUCALPA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesPUCALPA"> PUCALPA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesPUCALPA">
+						<p class="custom-font-body"> A localidade PUCALPA está a 15km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<img class="report-img" src="PUCALPA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesRAMALDOBACURI" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesRAMALDOBACURI"> RAMAL DO BACURI</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesRAMALDOBACURI">
+						<p class="custom-font-body"> A localidade RAMAL DO BACURI está a 42km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Paraná dos Moura.</p>
+						
+						<img class="report-img" src="RAMAL DO BACURI.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesRIOAZULPDSSS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesRIOAZULPDSSS"> RIO AZULPDSSS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesRIOAZULPDSSS">
+						<p class="custom-font-body"> A localidade RIO AZULPDSSS está a 45km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<p class="custom-font-body"> Faz parte do Projeto de Desenvolvimento Sustentável São Salvador - PDSSS</p>
+						
+						<img class="report-img" src="RIO AZULPDSSS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSAOPAULO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSAOPAULO"> SAO PAULO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSAOPAULO">
+						<p class="custom-font-body"> A localidade SAO PAULO está a 20km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Paraná dos Moura.</p>
+						
+						<img class="report-img" src="SAO PAULO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSAOVIDAL" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSAOVIDAL"> SAO VIDAL</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSAOVIDAL">
+						<p class="custom-font-body"> SAO VIDAL é uma localidade urbana.</p>
+						
+						<img class="report-img" src="SAO VIDAL.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSERRADOMOA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSERRADOMOA"> SERRA DO MOA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSERRADOMOA">
+						<p class="custom-font-body"> A localidade SERRA DO MOA está a 82km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="SERRA DO MOA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSERINGALAGROVILA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSERINGALAGROVILA"> SERINGAL AGROVILA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSERINGALAGROVILA">
+						<p class="custom-font-body"> A localidade SERINGAL AGROVILA está a 9km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Treze de Maio.</p>
+						
+						<img class="report-img" src="SERINGAL AGROVILA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSEDEPDSSS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSEDEPDSSS"> SEDE PDSSS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSEDEPDSSS">
+						<p class="custom-font-body"> A localidade SEDE PDSSS está a 41km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<p class="custom-font-body"> Faz parte do Projeto de Desenvolvimento Sustentável São Salvador - PDSSS</p>
+						
+						<img class="report-img" src="SEDE PDSSS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSAOFRANCISCO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSAOFRANCISCO"> SAO FRANCISCO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSAOFRANCISCO">
+						<p class="custom-font-body"> SAO FRANCISCO é uma localidade urbana.</p>
+						
+						<img class="report-img" src="SAO FRANCISCO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSAOFRANCISCOPDSSS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSAOFRANCISCOPDSSS"> SAO FRANCISCO PDSSS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSAOFRANCISCOPDSSS">
+						<p class="custom-font-body"> A localidade SAO FRANCISCO PDSSS está a 39km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<p class="custom-font-body"> Faz parte do Projeto de Desenvolvimento Sustentável São Salvador - PDSSS</p>
+						
+						<img class="report-img" src="SAO FRANCISCO PDSSS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSAOFRANCISCORAM" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSAOFRANCISCORAM"> SAO FRANCISCO RAM</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSAOFRANCISCORAM">
+						<p class="custom-font-body"> A localidade SAO FRANCISCO RAM está a 20km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Paraná dos Moura.</p>
+						
+						<img class="report-img" src="SAO FRANCISCO RAM.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesSOCO" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesSOCO"> SOCO</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesSOCO">
+						<p class="custom-font-body"> A localidade SOCO está a 36km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="SOCO.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesTORREDALUA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesTORREDALUA"> TORRE DA LUA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesTORREDALUA">
+						<p class="custom-font-body"> TORRE DA LUA é uma localidade urbana.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Alberto Santiago.</p>
+						
+						<img class="report-img" src="TORRE DA LUA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesTRESUNIDOS" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesTRESUNIDOS"> TRES UNIDOS</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesTRESUNIDOS">
+						<p class="custom-font-body"> A localidade TRES UNIDOS está a 42km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="TRES UNIDOS.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesVALQUIRIA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesVALQUIRIA"> VALQUIRIA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesVALQUIRIA">
+						<p class="custom-font-body"> A localidade VALQUIRIA está a 10km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> A localidade é acessível por uma rede de estradas vicinais.</p>
+						
+						<p class="custom-font-body"> Está inserida no Projeto de Assentamento Treze de Maio.</p>
+						
+						<img class="report-img" src="VALQUIRIA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-report-villagesZUMIRA" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h2 class="modal-title custom-font-report-title" id="modal-report-label-villagesZUMIRA"> ZUMIRA</h2>
+						<p class="text-muted custom-font-body">Lana et. al (2017)</p>
+					</div>
+					<div class="modal-body" id="modal-report-text-villagesZUMIRA">
+						<p class="custom-font-body"> A localidade ZUMIRA está a 74km da cidade mais próxima.</p>
+						
+						<p class="custom-font-body"> O acesso é realizado por pequenas embarcações.</p>
+						
+						<img class="report-img" src="ZUMIRA.JPG"/>
+						<br/>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="modal-completed-description" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title custom-font-subtitle" id="modal-title-description"></h4>
+					</div>
+					<div class="modal-body">
+						<p class="custom-font-body" id="info-description"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+		<script type="text/javascript" src="./jquery-1.9.1.min.js"></script>
+		
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript" src="./config.js"></script>
+		<script type="text/javascript" src="./publish.min.js"></script>
+	</body>
+</html>
+
